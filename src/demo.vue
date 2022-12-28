@@ -5,7 +5,8 @@
       row-key="index"
       :data="data"
       :columns="columns"
-      :row-class-name="getRowClassName"
+      :row-class-name="changeRowClass"
+      :rowAttributes="fff"
     >
       <template #footerSummary>
         <div class="t-table__row-filter-inner">汇总：近期数据波动较大</div>
@@ -135,10 +136,11 @@ export default {
   },
 
   methods: {
-    getRowClassName({ rowIndex }) {
-      if (rowIndex === 2) return 'custom-third-class-name';
-      return '';
+    changeRowClass(params) {
+      if (params.rowIndex === 2) return 'custom-third-class-name';
+      return 'custom-third-classall';
     },
+    fff() {},
   },
 };
 </script>
@@ -147,6 +149,12 @@ export default {
 .t-demo__style .t-table .custom-third-class-name > td {
   color: green;
   font-weight: bold;
+}
+
+.t-demo__style .t-table .custom-third-classall > td {
+  color: green;
+  font-weight: bold;
+  background-color: blue;
 }
 
 .t-demo__style .t-table td.last-column-class-name {
